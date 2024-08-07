@@ -16,8 +16,8 @@ public class InitMovies implements CommandLineRunner {
   @Override
   public void run(String... args) {
 
-    Flux<String> movies = Flux.just("Back to the Future"
-        , "E.T. the Extra-Terrestrial",
+    Flux<String> movies = Flux.just("Back to the Future",
+        "E.T. the Extra-Terrestrial",
         "The Empire Strikes Back",
         "The Terminator",
         "Indiana Jones and the Last Crusade",
