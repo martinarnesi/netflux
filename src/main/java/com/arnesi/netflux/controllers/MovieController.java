@@ -1,10 +1,12 @@
 package com.arnesi.netflux.controllers;
 
 import com.arnesi.netflux.domain.Movie;
+import com.arnesi.netflux.domain.MovieEvent;
 import com.arnesi.netflux.services.MovieServices;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +33,10 @@ public class MovieController {
   Flux<Movie>getAllMovies() {
     log.info("Get all movies");
     return movieServices.getAllMovies();
+  }
+
+  @GetMapping(value = "/{id}/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+  Flux<MovieEvent> streamMovieEvents(@PathVariable String id) {
+    return movieServices.streamMovieEvents(id);
   }
 }
